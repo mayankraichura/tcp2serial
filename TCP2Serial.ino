@@ -132,7 +132,10 @@ void loop() {
 		if (isConnected()){
 			if (client.available()){
 				//If so, read from it and dump it on Serial channel
-				while (client.available()) Serial.write(client.read());
+				while (client.available()) {
+					Serial.write(client.read());
+					yield();	//Not sure if it's needed.
+				}
 			}
 		}
 
